@@ -11,6 +11,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.use("/api",apiRoutes);
 
+app.get('/', (req, res) => {
+    res.send('Backend is running successfully!');
+});
+  
+
 connectDB();
 const PORT=3000;
 
