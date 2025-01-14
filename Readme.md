@@ -59,7 +59,7 @@ Event Management System
 ├── package-lock.json        # Lock file for package dependencies
 └── readme.md                # Project documentation (this file)
 
-
+```
 ## Features
 
 ### 1. **Authentication and Authorization**
