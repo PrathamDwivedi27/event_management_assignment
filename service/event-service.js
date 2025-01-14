@@ -46,17 +46,14 @@ class EventService {
   async updateEvent(id, data, currentUser) {
     try {
       const event = await this.eventRepository.getEvent(id);
-    //   console.log(event);
-    //   console.log(currentUser);
-    //   console.log("ghjkl",event.organizer._id.toString());
 
-      // Check if event exists
       if (!event) {
         throw new Error("Event not found");
       }
 
       // Check if the current user is the organizer of the event
       if (event.organizer._id.toString() !== currentUser.id) {
+        return "You must be the organizer of the event to make changes";
         throw new Error(
           "You must be the organizer of the event to make changes"
         );
