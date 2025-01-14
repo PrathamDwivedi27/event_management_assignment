@@ -1,6 +1,9 @@
 import EventService from "../service/event-service.js";
+import UserService from "../service/user-service.js";
+
 
 const eventService=new EventService();
+const userService=new UserService();
 
 const createEvent=async (req,res)=>{
     try {
@@ -109,6 +112,7 @@ const registerEvent = async (req, res) => {
       const userId = req.user.id; 
       const { id: eventId } = req.params;
       const result = await eventService.registerEvent(eventId, userId);
+      
       res.status(200).json({
         message: "Registered successfully", 
         success: true, 
@@ -169,6 +173,7 @@ const getEventAttendees = async (req, res) => {
     });
     }
 }
+  
 
 
 export {

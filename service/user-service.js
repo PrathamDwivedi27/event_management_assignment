@@ -63,6 +63,16 @@ class UserService {
       throw error;
     }
   }
+
+  async findUser(id){
+    try {
+      const response = await this.userRepository.getUser(id);
+      return response;
+    } catch (error) {
+      console.error("Error in UserService finding user", error);
+      throw error;
+    }
+  }
 }
 
 export default UserService;
