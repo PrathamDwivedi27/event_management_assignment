@@ -1,5 +1,9 @@
 # Event Management System
 
+## API Documentation
+This is API documentation which will give you a rough idea what different api endpoints are doing and which is expected input and output 
+[View API Documentation](https://documenter.getpostman.com/view/39632752/2sAYQXpDfK)
+
 ## Overview
 
 The **Event Management System** is designed to provide a seamless solution for creating, managing, and attending events. The application is built with **Node.js**, **Express**, **MongoDB**, and **JWT authentication**, ensuring a robust and scalable platform for event organizers and participants. This system supports user registration, role-based access, event registration, analytics, notifications, and more.
