@@ -7,6 +7,7 @@ The **Event Management System** is designed to provide a seamless solution for c
 ---
 
 ## Folder Structre
+```
 
 Event Management System
 │
