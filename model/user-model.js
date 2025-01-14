@@ -18,6 +18,14 @@ const userSchema=new mongoose.Schema({
         type:String,
         enum:['user','admin','organiser'],
         default:'user'
+    },
+    isDeleted:{
+        type:Boolean,
+        default:false
+    },
+    deletedAt:{
+        type:Date,
+        default:null
     }
 },
 {timestamps:true});

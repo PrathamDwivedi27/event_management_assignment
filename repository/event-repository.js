@@ -53,6 +53,26 @@ class EventRepository{
     async save(event) {
         return await event.save();
     }
+    async getAllEventsWithStats() {
+        try {
+          const events = await this.eventModel.aggregate([
+            {
+              $project: {
+                name: 1,
+                date: 1,
+                location: 1,
+                capacity: 1,
+                organizer: 1,
+                registrationsCount: { $size: "$attendees" }, // Count attendees
+              },
+            },
+          ]);
+          return events;
+        } catch (error) {
+          console.error("Error retrieving events with stats:", error);
+          throw error;
+        }
+      }
 }
 
 export default EventRepository;

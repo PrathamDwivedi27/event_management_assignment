@@ -30,6 +30,39 @@ class UserService {
       throw error;
     }
   }
+
+  async getAllUsers(query, page, limit) {
+    try {
+      const skip = (page - 1) * limit;
+    
+      const totalUsers = await this.userRepository.countUsers(query); 
+  
+      const users = await this.userRepository.findAllUsers(query, skip, limit);
+  
+      const totalPages = Math.ceil(totalUsers / limit);
+      
+      return {
+        users,            
+        totalUsers,       
+        currentPage: page, 
+        totalPages         
+      };
+    } catch (error) {
+      console.error("Error in UserService while fetching users:", error);
+      throw error;
+    }
+  }
+  
+
+  async deleteUser(id) {
+    try {
+      const user = await this.userRepository.deleteUser(id);
+      return user;
+    } catch (error) {
+      console.error("Error in UserService while soft deleting user:", error);
+      throw error;
+    }
+  }
 }
 
 export default UserService;

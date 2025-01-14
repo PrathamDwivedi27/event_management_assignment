@@ -145,6 +145,16 @@ class EventService {
 
     return event.attendees; 
   }
+
+  async getEventsWithStats() {
+    try {
+      const events = await this.eventRepository.getAllEventsWithStats();
+      return events;
+    } catch (error) {
+      console.error("Error in EventService while fetching events with stats:", error);
+      throw error;
+    }
+  }
 }
 
 export default EventService;
