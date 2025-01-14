@@ -6,6 +6,59 @@ The **Event Management System** is designed to provide a seamless solution for c
 
 ---
 
+## Folder Structre
+
+Event Management System
+│
+├── config
+│   ├── db.js                # Database initialization
+│   └── server-config.js     # Environment variables setup
+│
+├── controller
+│   ├── admin-controller.js  # Admin-related APIs
+│   ├── event-controller.js  # Event-related APIs
+│   ├── user-controller.js   # User-related APIs
+│   └── notification-controller.js  # Notification-related APIs
+│
+├── middleware
+│   ├── auth-middleware.js   # Authentication middleware
+│   └── check-admin.js       # Admin check middleware
+│
+├── model
+│   ├── user-model.js        # User model schema
+│   └── event-model.js       # Event model schema
+│
+├── repository
+│   ├── user-repository.js   # User repository for DB interaction
+│   └── event-repository.js  # Event repository for DB interaction
+│
+├── routes
+│   ├── index.js             # Main routes file
+│   └── v1
+│       ├── userRoutes.js    # User-related routes
+│       ├── eventRoutes.js   # Event-related routes
+│       ├── analyticsRoutes.js  # Analytics-related routes
+│       ├── notificationRoutes.js  # Notification-related routes
+│       └── adminRoutes.js   # Admin-related routes
+│
+├── service
+│   ├── user-service.js      # Business logic for users
+│   └── event-service.js     # Business logic for events
+│
+├── src
+│   └── index.js             # Main file to initialize the server
+│
+├── utils
+│   └── authUtils.js         # Utility functions for authentication
+│
+├── .env                     # Environment variables
+├── .env.example             # Example environment variables file
+├── .gitignore               # Git ignore rules
+├── package.json             # Project dependencies and scripts
+├── package-lock.json        # Lock file for package dependencies
+└── readme.md                # Project documentation (this file)
+
+
 ## Features
 
 ### 1. **Authentication and Authorization**
