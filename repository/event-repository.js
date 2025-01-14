@@ -73,6 +73,31 @@ class EventRepository{
           throw error;
         }
       }
+
+      async getPopularEvents (){
+        try {
+           const events=await this.eventModel
+           .find({})
+           .sort({ "attendees.length": -1 })
+           .limit(5)
+           .select('name attendees'); 
+
+           return events;
+        } catch (error) {
+          console.error("Error retrieving popular events:", error);
+          throw error;
+        }
+      };
+
+      async getEventStats(id){
+        try {
+            const event=await this.eventModel.findById(id).select('name attendees').populate("attendees", "name email");
+            return event;
+        } catch (error) {
+            console.log('Something went wrong while retrieving get event stats in event repo', error);
+            throw error;
+        }
+      }
 }
 
 export default EventRepository;

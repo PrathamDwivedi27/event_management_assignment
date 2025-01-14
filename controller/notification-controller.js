@@ -1,7 +1,8 @@
 import userModel from '../model/user-model.js';
 import eventModel from '../model/event-model.js';
 import nodemailer from "nodemailer";
-import { APP_PASS } from "../config/server-config.js";
+import { APP_PASS,SENDER_EMAIL } from "../config/server-config.js";
+
 
 // Function to send email
 const sendEventEmail = async (email, name, eventName, message) => {
@@ -11,13 +12,13 @@ const sendEventEmail = async (email, name, eventName, message) => {
     port: 587,
     secure: false,
     auth: {
-      user: 'event.backend.assignment@gmail.com',
-      pass: APP_PASS, // Or use an environment variable
+      user: SENDER_EMAIL,
+      pass: APP_PASS,
     },
   });
 
   const info = await transporter.sendMail({
-    from: 'event.backend.assignment@gmail.com',
+    from: SENDER_EMAIL,
     to: email,
     subject: `Notification for ${eventName}`,
     html: `

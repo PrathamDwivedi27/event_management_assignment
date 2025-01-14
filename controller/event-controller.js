@@ -173,7 +173,69 @@ const getEventAttendees = async (req, res) => {
     });
     }
 }
-  
+
+const getPopularEvents = async (req, res) => {
+    try {
+      const events = await eventService.getPopularEvents();
+      res.status(200).json({ 
+        success: true, 
+        data: events,
+        message: "Popular events fetched successfully",
+        err: {} 
+    });
+    } catch (error) {
+      console.log("Error in event controller while fetching popular events",error);
+      res.status(500).json({ 
+        success: false, 
+        message: error.message ,
+        data: {},
+        err: error
+    });
+    }
+}
+
+const getEventStats = async (req, res) => {
+    try {
+      const eventId = req.params.id;
+      console.log("eventId",eventId);
+      const eventStats = await eventService.getEventStats(eventId);
+      console.log("eventStats",eventStats);
+      res.status(200).json({ 
+        success: true, 
+        data: eventStats,
+        message: "Event stats fetched successfully",
+        err: {} 
+    });
+    } catch (error) {
+      console.error('Error fetching event stats:', error);
+      res.status(500).json({ 
+        success: false, 
+        message: 'Failed to fetch event stats',
+        data: {},
+        err: error.message 
+    });
+    }
+};
+
+const getActiveUsers = async (req, res) => {
+    try {
+      const activeUsers = await eventService.getActiveUsers();
+      res.status(200).json({
+        success: true,
+        message: "Top 5 most active users retrieved successfully",
+        data: activeUsers,
+        err: {},
+      });
+    } catch (error) {
+      console.error("Error fetching active users:", error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to fetch active users",
+        data: {},
+        err: error.message,
+      });
+    }
+  };
 
 
 export {
@@ -184,5 +246,9 @@ export {
     deleteEvent,
     registerEvent,
     cancelRegistration,
-    getEventAttendees
+    getEventAttendees,
+    getPopularEvents,
+    getEventStats,
+    getActiveUsers
+    
 }
