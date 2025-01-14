@@ -1,6 +1,7 @@
 import EventRepository from "../repository/event-repository.js";
 import eventModel from "../model/event-model.js";
 import userModel from "../model/user-model.js";
+import { isOrganizer } from "../utils/isOrganiser.js";
 
 class EventService {
   constructor() {
@@ -9,6 +10,12 @@ class EventService {
 
   async createEvent(data,userId) {
     try {
+
+      const isUserOrganizer = await isOrganizer(userId);
+      console.log("isUserOrganizer",isUserOrganizer);
+      if (!isUserOrganizer) {
+        return null; 
+      }
       const event = await this.eventRepository.createEvent({ ...data, organizer: userId });
       return event;
     } catch (error) {
@@ -53,10 +60,10 @@ class EventService {
 
       // Check if the current user is the organizer of the event
       if (event.organizer._id.toString() !== currentUser.id) {
-        return "You must be the organizer of the event to make changes";
-        throw new Error(
-          "You must be the organizer of the event to make changes"
-        );
+        return null;
+        // throw new Error(
+        //   "You must be the organizer of the event to make changes"
+        // );
       }
       const updatedEvent = await this.eventRepository.updateEvent(id, data);
       return updatedEvent;
@@ -79,7 +86,8 @@ class EventService {
   
         // Check if the current user is the organizer of the event
         if (event.organizer._id.toString() !== currentUser.id) {
-          throw new Error("You must be the organizer of the event to delete it");
+          return null;
+          // throw new Error("You must be the organizer of the event to delete it");
         }
   
         // Delete the event

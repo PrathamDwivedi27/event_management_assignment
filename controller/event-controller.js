@@ -9,6 +9,13 @@ const createEvent=async (req,res)=>{
     try {
         const userId=req.user.id;
         const event=await eventService.createEvent(req.body,userId);
+
+        if (!event) {
+            return res.status(403).json({
+              message: 'Sorry, you are not an organizer and cannot create an event.',
+            });
+          }
+
         res.status(201).json({
             message:"Event created successfully",
             data:event,
@@ -68,7 +75,13 @@ const updateEvent=async (req,res)=>{
     try {
         const {id}=req.params;
         const currentUser=req.user;
+
         const updatedEvent=await eventService.updateEvent(id,req.body,currentUser);
+        if(!updatedEvent){
+            return res.status(403).json({
+                message: 'Sorry, you are not an organizer and cannot update this event.',
+              });
+        }
         res.status(200).json({
             message:"Event updated successfully",
             data:updatedEvent,
@@ -90,6 +103,11 @@ const deleteEvent=async (req,res)=>{
         const {id}=req.params;
         const currentUser=req.user;
         const deletedEvent=await eventService.deleteEvent(id,currentUser);
+        if(!deletedEvent){
+            return res.status(403).json({
+                message: 'Sorry, you are not an organizer and cannot delete this event.',
+              });
+        }
         res.status(200).json({
             message:"Event deleted successfully",
             data:deletedEvent,
