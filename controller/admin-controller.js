@@ -9,7 +9,7 @@ const getUsers = async (req, res) => {
   try {
     const { page = 1, limit = 5 } = req.query;
     const result = await userService.getAllUsers({ isDeleted: false }, +page, +limit);
-    console.log("result",result)
+    // console.log("result",result)
     // console.log("users",users);
     res.status(200).json({
       success: true,

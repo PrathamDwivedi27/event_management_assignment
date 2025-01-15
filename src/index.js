@@ -17,6 +17,8 @@ app.get('/', (req, res) => {
   
 
 connectDB();
+
+export {app};
 const PORT=3000;
 
 function setup_and_start_server(){

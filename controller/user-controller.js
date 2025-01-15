@@ -103,7 +103,7 @@ const userService = new UserService();
 const updateUser = async (req, res) => {
   try {
     const user = await userService.updateUser(req.params.id, req.body);
-    return res.status(200).json({
+    return res.status(202).json({
       data: user,
       success: true,
       err: {},
@@ -126,7 +126,7 @@ const getUser = async (req, res) => {
     const user = await userService.getUser(req.user, id);
     console.log(user);
     console.log(req.user);
-    return res.status(200).json({
+    return res.status(202).json({
       data: user,
       success: true,
       err: {},
