@@ -32,6 +32,7 @@ app.get('/', (req, res) => {
                 color: #333;
                 flex-direction: column;
                 text-align: center;
+                overflow-y: auto; /* Allow scrolling */
             }
             h1 {
                 color: #4CAF50;
@@ -54,6 +55,9 @@ app.get('/', (req, res) => {
                 text-align: left;
                 overflow: hidden;
                 transition: all 0.3s ease-in-out;
+                color: #333; /* Ensure text is visible */
+                max-height: 70vh; /* Limit height of the endpoints section */
+                overflow-y: auto; /* Allow scrolling in endpoints */
             }
             .endpoints:hover {
                 box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -94,8 +98,8 @@ app.get('/', (req, res) => {
                 margin: 0;
             }
             .code {
-                background-color: #333;
-                color: #fff;
+                
+                color: white;
                 padding: 5px 10px;
                 border-radius: 4px;
                 font-family: monospace;
@@ -210,6 +214,9 @@ app.get('/', (req, res) => {
     </html>
     `);
 });
+
+
+
 
 
   
