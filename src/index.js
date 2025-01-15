@@ -81,7 +81,7 @@ app.get('/', (req, res) => {
     </head>
     <body>
         <h1>Welcome to the Event Management System API!</h1>
-        <p>Our API is up and running smoothly. You can access various routes to manage events, users, notifications, and more!</p>
+        <p>Our Event Managements sytem backend APIs is up and running smoothly. You can access various routes to manage events, users, notifications, and more!</p>
         
         <div class="endpoints">
             <h2>Available Endpoints:</h2>
@@ -89,21 +89,26 @@ app.get('/', (req, res) => {
                 <li><span class="code">GET /</span> - Home endpoint, returns a welcome message</li>
                 <li><span class="code">POST /api/v1/users/register</span> - Register a new user</li>
                 <li><span class="code">POST /api/v1/users/login</span> - Login an existing user</li>
-                <li><span class="code">GET /api/v1/users/profile</span> - Get user profile data</li>
-                <li><span class="code">POST /api/v1/events/create</span> - Create a new event</li>
+                <li><span class="code">GET /api/v1/users/:id</span> - Get user profile data</li>
+                <li><span class="code">PUT /api/v1/users/:id</span> - Update user data </li>
+                <li><span class="code">POST /api/v1/events</span> - Create a new event</li>
                 <li><span class="code">GET /api/v1/events</span> - Get all events</li>
                 <li><span class="code">GET /api/v1/events/:id</span> - Get a specific event by ID</li>
                 <li><span class="code">PUT /api/v1/events/:id</span> - Update an event's details</li>
                 <li><span class="code">DELETE /api/v1/events/:id</span> - Delete an event</li>
-                <li><span class="code">GET /api/v1/analytics/popular-events</span> - Get popular events analytics</li>
+                <li><span class="code">POST /api/v1/events/:id/register</span> - Register for the event</li>
+                <li><span class="code">DELETE /api/v1/events/:id/register</span> - Cancel registration</li>
+                <li><span class="code">GET /api/v1/events/:id/attendees</span> - Get all attendees of that event</li>
+                <li><span class="code">GET /api/v1/analytics/event/popular</span> - Get popular events analytics</li>
+                <li><span class="code">GET /api/v1/analytics/users/active</span> - Get all active users</li>
+                <li><span class="code">GET /api/v1/analytics/events/:id/stats</span> - Get events analytics</li>
                 <li><span class="code">POST /api/v1/notifications/send</span> - Send a notification</li>
-                <li><span class="code">GET /api/v1/notifications</span> - Get all notifications</li>
-                <li><span class="code">GET /api/v1/notifications/:id</span> - Get a specific notification</li>
-                <li><span class="code">GET /api/v1/admin/stats</span> - Get admin dashboard stats</li>
+                <li><span class="code">GET /api/v1/admin/events</span> - Get all events</li>
+                <li><span class="code">GET /api/v1/admin/users</span> - Get all users</li>
+                <li><span class="code">GET /api/v1/admin/users/:id</span> - Soft delete the user and all its registrations</li>
+
             </ul>
         </div>
-        
-        <p>If you have any questions, please contact the API support team.</p>
     </body>
     </html>
     `);
