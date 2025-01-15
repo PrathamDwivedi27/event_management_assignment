@@ -25,6 +25,8 @@ This is API documentation which will give you a rough idea what different api en
 5. **Validations**
    Various validations, such as authMiddleware, are written to ensure that unauthorized users cannot access data, thereby maintaining security.
 
+6. **Testing**
+   Written tests for five endpoints across seven test cases.
 
 
 ## Overview
@@ -80,12 +82,20 @@ Event Management System
 │   ├── authUtils.js         # Utility functions for authentication
 │   └── isOrganiser.js       # Check if the user is the organiser for event updates and deletions
 │
+├── tests
+│   ├── analyticsPopularevent.test.js    # Test file for analytics popular event
+│   ├── analyticsroute.test.js           # Test file for analytics routes
+│   ├── login.test.js                   # Test file for user login
+│   ├── register.test.js                # Test file for user registration
+│   └── getSpecificEvent.test.ts        # Test file for fetching specific event
+│
 ├── .env                     # Environment variables
 ├── .env.example             # Example environment variables file
 ├── .gitignore               # Git ignore rules
 ├── package.json             # Project dependencies and scripts
 ├── package-lock.json        # Lock file for package dependencies
 └── readme.md                # Project documentation (this file)
+
 
 
 ```
@@ -173,7 +183,7 @@ To get the project up and running locally, follow these steps:
 
 1. **Clone the repository**:
    ```terminal
-   git clone https://github.com/your-username/event-management-system.git
+   git clone https://github.com/PrathamDwivedi27/event-management-system.git
    
 2. **Install the dependencies**:
     ```terminal
