@@ -4,9 +4,28 @@
 This is API documentation which will give you a rough idea what different api endpoints are doing and which is expected input and output 
 [View API Documentation](https://documenter.getpostman.com/view/39632752/2sAYQXpDfK)
 
-##Deployed link
+## Deployed link
 
 [View deployed backend](https://event-management-assignment.onrender.com)
+
+## Key Highlights
+
+1. **Logical Structure**
+   The folder structure is systematically organized into controller, service, and repository layers.
+
+2. **Indexing to increase performance**
+   Indexes are created based on fields like email and attendees to enhance the speed of search queries.
+
+3. **Optimised search Query**
+   Search queries are optimized, such as those used in analytics endpoints, to improve efficiency
+
+4. **Pagination**
+   Pagination is implemented for large datasets, such as when fetching users.
+
+5. **Validations**
+   Various validations, such as authMiddleware, are written to ensure that unauthorized users cannot access data, thereby maintaining security.
+
+
 
 ## Overview
 
@@ -58,7 +77,8 @@ Event Management System
 │   └── index.js             # Main file to initialize the server
 │
 ├── utils
-│   └── authUtils.js         # Utility functions for authentication
+│   ├── authUtils.js         # Utility functions for authentication
+│   └── isOrganiser.js       # Check if the user is the organiser for event updates and deletions
 │
 ├── .env                     # Environment variables
 ├── .env.example             # Example environment variables file
@@ -66,6 +86,7 @@ Event Management System
 ├── package.json             # Project dependencies and scripts
 ├── package-lock.json        # Lock file for package dependencies
 └── readme.md                # Project documentation (this file)
+
 
 ```
 ## Features
