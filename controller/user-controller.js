@@ -42,7 +42,7 @@ const loginUser = async (req, res) => {
 };
 
 const createToken = (id,role) => {
-  console.log("ghjk",id,role);
+  // console.log("ghjk",id,role);
   return jwt.sign({ id:id,role:role }, JWT_SECRET, { expiresIn: '15d' });
 };
 
